@@ -7,6 +7,7 @@
 #include <boost/graph/dijkstra_shortest_paths.hpp>
 #include <boost/property_map/property_map.hpp>
 #include <vector>
+#include <boost/graph/graphviz.hpp>
 
 typedef boost::property<boost::edge_weight_t, int> EdgeWeightProperty;
 typedef boost::adjacency_list<boost::listS, boost::vecS, boost::directedS, boost::no_property, EdgeWeightProperty > DirectedGraph;
@@ -19,10 +20,18 @@ typedef std::pair<int, int> Edge;
 class Graph
 {
 private:
-	std::vector<int> nodes;
+	std::vector<int[2]> nodes;
+	std::vector<int> weigths;
+	DirectedGraph g;
 public:
 	DirectedGraph addEdges();
 	void printList(DirectedGraph g);
-	void findShortestPath(int node1,int node2,DirectedGraph g);
-};
+	void findShortestPath(int node1,int node2);
+	void vizualization(DirectedGraph g);
+	Graph(DirectedGraph graph);
+	~Graph();
+	void readFromFile(std::string path);
+	void writeToFile(std::string path);
+	DirectedGraph getGraph();
+	void print();
 #endif
